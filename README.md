@@ -10,7 +10,7 @@ This app powers Blocipedia at *COMING SOON*
 
 - Rails 4.2.5
 
-- Ruby 2.2.3
+- Ruby 2.2.4
 
 - PostgreSQL 9.3.x or higher
 
