@@ -1,24 +1,72 @@
+# Blocipedia
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Wikis are a great way to collaborate on community-sourced content. Whether the wiki is for a hobby or work-related project, this app lets users create their own Markdown-based wikis and share them publicly or privately with other collaborators.
 
+This app powers Blocipedia at *COMING SOON*
 
-Welcome to your Rails project on Cloud9 IDE!
+## Getting Started
 
-To get started, just do the following:
+## Software requirements
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://blocipedia-yamuda.c9users.io/).
+- Rails 4.2.5
 
-Happy coding!
-The Cloud9 IDE team
+- Ruby 2.2.3
 
+- PostgreSQL 9.3.x or higher
 
-## Support & Documentation
+## Navigate to the Rails application
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+```
+$ cd ~/bloc/blocipedia
+```
+
+## Set configuration files
+
+```
+$ cp config/database.yml.template config/database.yml
+$ cp config/initializers/mail.rb.template config/initializers/mail.rb
+```
+
+## Create the database
+
+```
+$ pgstart
+$ rake db:create
+```
+
+## Migrating and seeding the database
+
+```
+$ rake db:migrate
+$ rake db:seed
+```
+
+## Starting the local server
+
+```
+$ rails server
+
+    or
+
+$ rails s
+```
+
+## Production Deployment
+
+```
+$ git push heroku master
+$ heroku run rake db:migrate
+```
+
+## Support
+
+Bug reports and feature requests can be filed with the rest for the Ruby on Rails project here:
+* [File Bug Reports and Features](https://github.com/yamuda9/blocipedia/issues)
+
+## License
+
+Blocipedia is released under the *LICENSE-NAME* license.
+
+## Copyright
+
+copyright:: (c) Copyright 2016 Blocipedia. All Rights Reserved.
