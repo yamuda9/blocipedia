@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
+  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
   def new
-    @wikis = Wiki.new
+    @wiki = Wiki.new
   end
   
   def index
@@ -8,18 +9,14 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wikis = Wiki.find(params[:id])
   end
   
   def create
-    @wikis = Wiki.new
-    @wikis.title   = params[:wiki][:title]
-    @wikis.body    = params[:wiki][:body]
-    @wikis.private = params[:wiki][:private]
+    @wiki = Wiki.new(wiki_params)
     
-    if @wikis.save
+    if @wiki.save
       flash[:notice] = "Wiki was saved."
-      redirect_to @wikis
+      redirect_to @wiki
     else
       flash.new[:alert] = "There was an error saving the post. Please try again."
       render :new
@@ -27,18 +24,13 @@ class WikisController < ApplicationController
   end
   
   def edit
-    @wikis = Wiki.find(params[:id])
   end
   
   def update
-    @wikis = Wiki.find(params[:id])
-    @wikis.title   = params[:wiki][:title]
-    @wikis.body    = params[:wiki][:body]
-    @wikis.private = params[:wiki][:private]
     
-    if @wikis.save
+    if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated."
-      redirect_to @wikis
+      redirect_to @wiki
     else
       flash.now[:alert] = "There was an error saving the wiki. Please try again."
       render :edit
@@ -46,14 +38,22 @@ class WikisController < ApplicationController
   end
 
   def destroy
-    @wikis = Wiki.find(params[:id])
-    
-    if @wikis.destroy
-      flash[:notice] = "\"#{@wikis.title}\" was deleted successfully."
+    if @wiki.destroy
+      flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
       redirect_to wikis_path
     else
       flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
+  end
+  
+  private
+  
+  def set_wiki
+    @wiki = Wiki.find(params[:id])
+  end
+  
+  def wiki_params
+    params.require(:wiki).permit(:title, :body, :private)
   end
 end
