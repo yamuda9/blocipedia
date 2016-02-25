@@ -2,7 +2,7 @@
 
 Wikis are a great way to collaborate on community-sourced content. Whether the wiki is for a hobby or work-related project, this app lets users create their own Markdown-based wikis and share them publicly or privately with other collaborators.
 
-This app powers Blocipedia at *COMING SOON*
+This app powers Blocipedia at http://calm-cliffs-68106.herokuapp.com/
 
 ## Getting Started
 
