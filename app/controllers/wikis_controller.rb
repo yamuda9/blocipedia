@@ -1,7 +1,9 @@
 class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
   
   def index
@@ -13,6 +15,7 @@ class WikisController < ApplicationController
   
   def create
     @wiki = Wiki.new(wiki_params)
+    authorize @wiki
     
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -24,10 +27,11 @@ class WikisController < ApplicationController
   end
   
   def edit
+    authorize @wiki
   end
   
   def update
-    
+    authorize @wiki
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
@@ -38,6 +42,7 @@ class WikisController < ApplicationController
   end
 
   def destroy
+    authorize @wiki
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
       redirect_to wikis_path

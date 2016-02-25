@@ -23,6 +23,7 @@ source 'https://rubygems.org'
  gem 'bootstrap'
  gem 'figaro'
  gem 'devise'
+ gem 'pundit'
  gem 'pry'
 
  group :development, :test do
